@@ -1,30 +1,31 @@
 import React from 'react'
+import gql from 'graphql-tag'
+import { useQuery } from '@apollo/client'
+import { withProvider } from '../graphqlProvider'
 
-// create fake data for now
-// this is the shape of the data from graphql
-const data = {
-  users: [
-    {
-      id: '1',
-      first_name: 'Lucas',
-      last_name: 'Sherwin', 
-      email: 'test@test.com', 
-      username: 'test_user', 
-      password: 'test_pass'
-    },
-  ],
-};
+// define query
+// only getting username for now
+const usersQuery = gql`
+  query allUsers {
+    users {
+      username
+    }
+  }
+`
 
 const loading = false;
 
-const User: React.FunctionComponent = ({ id, first_name, last_name, email, username, password }) => {
+const User: React.FunctionComponent = ({ username }) => {
   return <li>{username}</li>
 }
 
 const Users = () => {
+  const { data, loading, error } = useQuery(usersQuery);
+
   if (loading) {
     return <span>"Loading..."</span>
   }
+
   return (
     <div>
       <h1>Users</h1>
@@ -36,4 +37,5 @@ const Users = () => {
     </div>
   )
 }
-export default Users
+
+export default withProvider(Users)
