@@ -10,7 +10,8 @@ import "channels"
 
 import mount from '../mount'
 import Hello from './hello_react'
-mount({Hello})
+import Users from '../Users'
+mount({ Hello, Users })
 
 Rails.start()
 Turbolinks.start()
