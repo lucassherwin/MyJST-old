@@ -12,9 +12,9 @@
 - ToDo list
 
 ## TODO
-- [ ] Setup application - react, graphQL
-- [ ] Build db
-- [ ] Build out basic backend (routes, set up react, set up graphql)
+- [x] Setup application - react, graphQL
+- [x] Build db
+- [x] Build out basic backend (routes, set up react, set up graphql)
 - [ ] Build out basic frontend
 - [ ] Get data from DB on frontend
 - [ ] Make frontned better - responsive css
