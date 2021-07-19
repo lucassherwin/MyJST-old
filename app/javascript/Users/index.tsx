@@ -38,4 +38,4 @@ const Users = () => {
   )
 }
 
-export default withProvider(Users)
+export default withProvider(Users) // gives Users component access to the Apollo client
