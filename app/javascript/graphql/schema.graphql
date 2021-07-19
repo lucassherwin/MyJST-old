@@ -1,0 +1,48 @@
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+type Job {
+  comapny: String
+  contact: String
+  createdAt: ISO8601DateTime!
+  id: ID!
+  position: String
+  status: String
+  updatedAt: ISO8601DateTime!
+  userId: Int
+}
+
+type Mutation {
+  """
+  An example field added by the generator
+  """
+  testField: String!
+}
+
+type Query {
+  jobs: [Job!]!
+  tasks: [Task!]!
+  users: [User!]!
+}
+
+type Task {
+  createdAt: ISO8601DateTime!
+  details: String
+  id: ID!
+  title: String
+  updatedAt: ISO8601DateTime!
+  userId: String
+}
+
+type User {
+  createdAt: ISO8601DateTime!
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  password: String
+  updatedAt: ISO8601DateTime!
+  username: String
+}

@@ -1,29 +1,31 @@
-import React from 'react'
-import gql from 'graphql-tag'
-import { useQuery } from '@apollo/client'
-import { withProvider } from '../graphqlProvider'
+import React from 'react';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
+import { withProvider } from '../graphqlProvider';
+import { useAllUsersQuery } from 'graphql/types';
 
 // define query
 // only getting username for now
 const usersQuery = gql`
   query allUsers {
     users {
+      id
       username
     }
   }
-`
+`;
 
 const loading = false;
 
 const User: React.FunctionComponent = ({ username }) => {
-  return <li>{username}</li>
-}
+  return <li>{username}</li>;
+};
 
 const Users = () => {
-  const { data, loading, error } = useQuery(usersQuery);
+  const { data, loading, error } = useAllUsersQuery(usersQuery);
 
   if (loading) {
-    return <span>"Loading..."</span>
+    return <span>"Loading..."</span>;
   }
 
   return (
@@ -36,6 +38,6 @@ const Users = () => {
       </ul>
     </div>
   )
-}
+};
 
-export default withProvider(Users) // gives Users component access to the Apollo client
+export default withProvider(Users); // gives Users component access to the Apollo client
