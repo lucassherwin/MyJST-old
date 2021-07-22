@@ -12,6 +12,15 @@ module Types
       User.all
     end
 
+    # /user/:id
+    field :user, Types::UserType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def user(id:)
+      User.find(id)
+    end
+
     field :jobs, [Types::JobType], null: false
     def jobs
       Job.all
