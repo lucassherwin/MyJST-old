@@ -1,8 +1,8 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { useQuery } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 import { withProvider } from '../graphqlProvider';
-import { useAllUsersQuery } from 'graphql/types';
+import { useAllUsersQuery } from '../graphql/types';
 
 // define query
 // only getting username for now

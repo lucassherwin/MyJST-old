@@ -11,8 +11,12 @@ import "channels"
 import mount from '../mount'
 import Hello from './hello_react'
 import Users from '../Users'
+import 'stylesheets/application.scss'
+
 mount({ Hello, Users })
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import "stylesheets/application"
