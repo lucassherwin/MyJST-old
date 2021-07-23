@@ -1,3 +1,9 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+
+// @apply doesnt work -- find out why eventually
+// .pulsing-text {
+//   @apply animate-pulse font-bold text-gray-200 text-2xl mb-6;
+// }
+
 @import "tailwindcss/utilities";

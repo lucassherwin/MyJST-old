@@ -17,7 +17,7 @@
 - [x] Build out basic backend (routes, set up react, set up graphql)
 - [ ] Build out basic frontend
 - [ ] Get data from DB on frontend
-- [ ] Make frontned better - responsive css
+- [ ] Make frontned better - responsive css - get @apply working for tailwind
 - [ ] Add extra items like auth
 
 ## DB Structure
