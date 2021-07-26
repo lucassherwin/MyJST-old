@@ -8,7 +8,7 @@ import { EditFilled, DeleteFilled, EyeFilled } from '@ant-design/icons';
 const jobsQuery = gql`
   query allJobs{
     jobs {
-      comapny
+      company
       position
       status
       contact

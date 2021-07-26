@@ -8,7 +8,7 @@
 
 user = User.create!(first_name: 'Lucas', last_name: 'Sherwin', email: 'test@test.com', username: 'test_user', password: 'test_pass')
 
-Job.create!(comapny: 'Test Company', position: 'Test Position', status: 'test status', contact: 'test contact', user_id: user.id)
-Job.create!(comapny: 'Test Company2 ', position: 'Test Position 2', status: 'test status 2', contact: 'test contact 2', user_id: user.id)
+Job.create!(company: 'Test Company', position: 'Test Position', status: 'test status', contact: 'test contact', user_id: user.id)
+Job.create!(company: 'Test Company2 ', position: 'Test Position 2', status: 'test status 2', contact: 'test contact 2', user_id: user.id)
 
 Task.create!(title: 'test title', details: 'test details', user_id: user.id)

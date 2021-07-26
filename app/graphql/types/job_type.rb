@@ -1,7 +1,7 @@
 module Types
   class JobType < Types::BaseObject
     field :id, ID, null: false
-    field :comapny, String, null: true
+    field :company, String, null: true
     field :position, String, null: true
     field :status, String, null: true
     field :contact, String, null: true
