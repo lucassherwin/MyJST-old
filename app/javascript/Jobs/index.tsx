@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { withProvider } from '../graphqlProvider';
 // import { useAllJobsQuery } from '../graphql/types';
 import {useQuery} from '@apollo/client'
+import { EditFilled, DeleteFilled, EyeFilled } from '@ant-design/icons';
 
 const jobsQuery = gql`
   query allJobs{
@@ -41,13 +42,13 @@ const Job: React.FunctionComponent = ({ company, position, status, contact }) =>
     <td className="py-3 px-6 text-center">
       <div className="flex item-center justify-center">
         <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-          <span>Update</span>
+          <EyeFilled />
         </div>
         <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-          <span>Edit</span>
+          <EditFilled />
         </div>
         <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-          <span>Delete</span>
+          <DeleteFilled />
         </div>
       </div>
     </td>
