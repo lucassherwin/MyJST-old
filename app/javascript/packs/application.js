@@ -9,11 +9,12 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import mount from '../mount'
-import Hello from './hello_react'
+// import Hello from './hello_react'
 import Users from '../Users'
+import Jobs from '../Jobs'
 import 'stylesheets/application.scss'
 
-mount({ Hello, Users })
+mount({ Users, Jobs })
 
 Rails.start()
 Turbolinks.start()
