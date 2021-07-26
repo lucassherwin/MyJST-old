@@ -34,7 +34,8 @@
     "autoprefixer": "^9",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "@graphql-codegen/typescript-document-nodes": "1.17.16"
   },
   "scripts": {
     "gql:codegen": "graphql-codegen --config codegen.yml"
