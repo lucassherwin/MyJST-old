@@ -8,6 +8,7 @@ import { EditFilled, DeleteFilled, EyeFilled } from '@ant-design/icons';
 const jobsQuery = gql`
   query allJobs{
     jobs {
+      id
       company
       position
       status
@@ -18,41 +19,58 @@ const jobsQuery = gql`
 
 const loading = false;
 
-const Job: React.FunctionComponent = ({ company, position, status, contact }) => {
+const Job: React.FunctionComponent = ({ company, position, status, contact, id }) => {
+  const actionClick = (action) => {
+    switch(action) {
+      case 'status':
+        console.log('change status');
+        break;
+      case 'edit':
+        console.log('edit job');
+        break;
+      case 'delete':
+        console.log('delete job');
+        break;
+      default:
+        console.log('how did we get here....');
+        break;
+    }
+  }
+
   return (
-    <tr className="border-b border-gray-200 hover:bg-gray-100">
-    <td className="py-3 px-6 text-left whitespace-nowrap">
-      <div className="flex items-center">
-        <span className="font-medium">{position}</span>
-      </div>
-    </td>
-    <td className="py-3 px-6 text-left">
-      <div className="flex items-center">
-        <span>{company}</span>
-      </div>
-    </td>
-    <td className="py-3 px-6 text-center">
-      <div className="flex items-center justify-center">
-        <span>{contact}</span>
-      </div>
-    </td>
-    <td className="py-3 px-6 text-center">
-      <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{status}</span>
-    </td>
-    <td className="py-3 px-6 text-center">
-      <div className="flex item-center justify-center">
-        <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-          <EyeFilled />
+    <tr className="border-b border-gray-200 hover:bg-gray-100" key={id}>
+      <td className="py-3 px-6 text-left whitespace-nowrap">
+        <div className="flex items-center">
+          <span className="font-medium">{position}</span>
         </div>
-        <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-          <EditFilled />
+      </td>
+      <td className="py-3 px-6 text-left">
+        <div className="flex items-center">
+          <span>{company}</span>
         </div>
-        <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-          <DeleteFilled />
+      </td>
+      <td className="py-3 px-6 text-center">
+        <div className="flex items-center justify-center">
+          <span>{contact}</span>
         </div>
-      </div>
-    </td>
-  </tr>
+      </td>
+      <td className="py-3 px-6 text-center">
+        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{status}</span>
+      </td>
+      <td className="py-3 px-6 text-center">
+        <div className="flex item-center justify-center">
+          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+            <EyeFilled onClick={() => actionClick('status')} />
+          </div>
+          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+            <EditFilled onClick={() => actionClick('edit')} />
+          </div>
+          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+            <DeleteFilled onClick={() => actionClick('delete')} />
+          </div>
+        </div>
+      </td>
+    </tr>
   );
 };
 
@@ -63,10 +81,17 @@ const Jobs = () => {
     return <span>"Loading..."</span>;
   }
 
+  const addJob = () => {
+    console.log('add job');
+  };
+
   return (
     <div className="overflow-x-auto">
       <div className="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
         <div className="w-full lg:w-5/6">
+          {/* <button className="top-0 right-0 bg-green-500 active:bg-green-700 rounded border-4" onClick={addJob}>Add Job</button> */}
+          <button className="top-0 right-0 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded" onClick={addJob}>Add Job</button>
+
           <div className="bg-white shadow-md rounded my-6">
             <table className="min-w-max w-full table-auto">
               <thead>
