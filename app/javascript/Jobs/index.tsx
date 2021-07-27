@@ -17,6 +17,26 @@ const jobsQuery = gql`
   }
 `;
 
+const addJob = gql`
+mutation {
+  addJob(input: {
+    company: "Company 3",
+    position: "position 3",
+   status: "status 3",
+   contact: "contact 3"
+  }) {
+    job {
+      id,
+      company,
+      position,
+     status,
+     contact
+    }
+    errors
+  }
+ }
+`
+
 const loading = false;
 
 const Job: React.FunctionComponent = ({ company, position, status, contact, id }) => {
