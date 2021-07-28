@@ -17,16 +17,19 @@ const jobsQuery = gql`
   }
 `;
 
+// hard code the user id for now
 const addJob = gql`
 mutation {
   addJob(input: {
     company: "Company 3",
     position: "position 3",
    status: "status 3",
-   contact: "contact 3"
+   contact: "contact 3",
+   userId: 1,
   }) {
     job {
       id,
+      user_id,
       company,
       position,
      status,
