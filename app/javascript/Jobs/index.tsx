@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { withProvider } from '../graphqlProvider';
 // import { useAllJobsQuery } from '../graphql/types';
 import {useQuery} from '@apollo/client'
 import { EditFilled, DeleteFilled, EyeFilled } from '@ant-design/icons';
+import AddJobModal from './addJobModal.js'
 
 const jobsQuery = gql`
   query allJobs{
@@ -98,22 +99,29 @@ const Job: React.FunctionComponent = ({ company, position, status, contact, id }
 };
 
 const Jobs = () => {
+  const [showModal, setShowModal] = useState(false);
+
   const { data, loading, error } = useQuery(jobsQuery);
 
   if (loading) {
     return <span>"Loading..."</span>;
   }
 
-  const addJob = () => {
+  const controlModal = () => {
     console.log('add job');
+
+    setShowModal(!showModal);
   };
 
   return (
     <div className="overflow-x-auto">
+      {
+        showModal ? <AddJobModal controlModal={controlModal} /> : null 
+      }
       <div className="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
         <div className="w-full lg:w-5/6">
           {/* <button className="top-0 right-0 bg-green-500 active:bg-green-700 rounded border-4" onClick={addJob}>Add Job</button> */}
-          <button className="top-0 right-0 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded" onClick={addJob}>Add Job</button>
+          <button className="top-0 right-0 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded" onClick={controlModal}>Add Job</button>
 
           <div className="bg-white shadow-md rounded my-6">
             <table className="min-w-max w-full table-auto">
