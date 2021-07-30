@@ -10,11 +10,12 @@ import "channels"
 
 import mount from '../mount'
 // import Hello from './hello_react'
-import Users from '../Users'
+// import Users from '../Users'
 import Jobs from '../Jobs'
+import Signup from '../Signup'
 import 'stylesheets/application.scss'
 
-mount({ Users, Jobs })
+mount({ Jobs, Signup })
 
 Rails.start()
 Turbolinks.start()
