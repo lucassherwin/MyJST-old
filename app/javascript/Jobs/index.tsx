@@ -108,15 +108,23 @@ const Jobs = () => {
   }
 
   const controlModal = () => {
-    console.log('add job');
+    console.log('modal');
 
     setShowModal(!showModal);
   };
 
+  const addJob = (jobTitle, company, contact, status) => {
+    // add the job and close the modal
+    // this will add the job -> await the job being created -> then close modal
+    console.log('add job');
+    console.log(jobTitle, company, contact, status);
+    setShowModal(!showModal);
+  }
+
   return (
     <div className="overflow-x-auto">
       {
-        showModal ? <AddJobModal controlModal={controlModal} /> : null 
+        showModal ? <AddJobModal controlModal={controlModal} addJob={addJob} /> : null 
       }
       <div className="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
         <div className="w-full lg:w-5/6">
