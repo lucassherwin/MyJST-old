@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { withProvider } from '../graphqlProvider';
-import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 // import { addUser } from './signUpQueries';
 
-const Signup = () => {
-  const [first, setFirst] = useState('');
-  const [last, setLast] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const addAccount = (event) => {
-    event.preventDefault();
-
-    const addUser = gql`
+const ADD_USER = gql`
   mutation {
     addUser(input: {
     firstName: "Added",
@@ -35,15 +25,34 @@ const Signup = () => {
     }
   }
 `;
-    console.log('before query', first, last, username, email, password);
 
-    const { data, loading, error } = useQuery(addUser);
+const Signup = () => {
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // const addAccount = (event) => {
+  //   event.preventDefault();
+
+  //   const { data, loading, error } = useQuery(addUser);
+  //   console.log(data);
+  // };
+
+  const [
+    addUser, 
+    { loading, data }
+  ] = useMutation(ADD_USER);
+
+  if (loading) return <p>Loading ...</p>;
+  if (data) {
     console.log(data);
-  };
+  }
 
   return (
     <div>
-      <form className="w-full max-w-lg" onSubmit={addAccount}>
+      <form className="w-full max-w-lg" onSubmit={() => addUser()}>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">First Name</label>
